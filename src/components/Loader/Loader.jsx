@@ -3,9 +3,7 @@ import './Loader.css'
 
 const Loader = () => {
     return (
-        <div className={"loaderCircle"}>
-
-        </div>
+        <div className={"loaderCircle"}/>
     );
 };
 

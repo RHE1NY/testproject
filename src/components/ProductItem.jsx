@@ -5,6 +5,7 @@ import db from "../firebase.config";
 const ProductItem = () => {
     const location = useLocation();
     const [productItemPage, setProductItemPage] = useState({});
+
     async function getItem(id) {
         const prodItem = db.collection('productItems').doc(id);
         const doc = await prodItem.get();
@@ -23,7 +24,7 @@ const ProductItem = () => {
     return (
 
         <div className={"shop-Item-Page"}>
-            <img src={productItemPage.image}></img>
+            <img src={productItemPage.image} alt={'shop'}/>
             <label  className={"shop-Item-Title"}>{productItemPage.name}</label> <br/><label className={"shop-Item-Description"}>{productItemPage.description}</label>
             <br/>  <label  className={"shop-Item-Price"}>Цена {productItemPage.price}</label>
         </div>

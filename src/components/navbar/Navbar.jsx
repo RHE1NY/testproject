@@ -6,7 +6,8 @@ const Navbar = () => {
     return (
         <header>
             <div className="container">
-                <div className="logo"><img src={logo} width="70px" height="70px"></img>
+                <div className="logo">
+                    <img src={logo} width="70px" height="70px"/>
                 </div>
                 <Link  to="/Shop" className="logo-text">
                   TEST

@@ -82,19 +82,19 @@ header .container {
     margin-bottom: 5px;
 }
 
-.jewerlyproductpanel {
+.jewelry-product-panel {
     position: relative;
     height: auto;
     box-sizing: border-box;
     padding: 13px;
 }
 
-.jewerlypanel {
+.jewelry-panel {
     border: 1.5px solid silver;
     width: 270px;
 }
 
-.jewerlyproductpanelname {
+.jewelry-product-panel-name {
     font-family: "Fira Code Light";
     margin-left: 15px;
     color: black;
@@ -103,7 +103,7 @@ header .container {
     font-size: 20px;
 }
 
-.jewerlyproductpanelname:hover {
+.jewelry-product-panel-name:hover {
     color: greenyellow;
    border-bottom: none;
     font-weight: bold;
@@ -166,7 +166,7 @@ header .container {
     transition-delay: 0s;
 }
 
-.sectionproducts {
+.products-section {
     position: absolute;
     display: table-row;
     justify-content: center;
@@ -174,17 +174,17 @@ header .container {
     margin-left: 300px;
 }
 
-.productitemname {
+.product-name {
     font-family: "Roboto Light";
     color: red;
-    font-width: bold;
+    font-weight: bold;
     font-size: 18px;
 }
-.productitemname:hover {
+.product-name:hover {
     color: black;
     cursor: pointer;
 }
-.productitemprice {
+.product-price {
     font-family: "Roboto Light";
     color: white;
     font-size: 14px;
