@@ -1,29 +1,25 @@
 import React, {useEffect, useState} from 'react';
-import {useLocation} from "react-router-dom";
+import {useLocation, useParams} from "react-router-dom";
 import db from "../firebase.config";
 
 const ProductItem = () => {
-    const location = useLocation();
+    const params = useParams();
     const [productItemPage, setProductItemPage] = useState({});
     async function getItem(id) {
         const prodItem = db.collection('productItems').doc(id);
         const doc = await prodItem.get();
-        console.log(id);
-        if (!doc.exists) {
-            console.log('No such document!');
-            } else {
-                console.log("No such document!");
-            }
+        setProductItemPage(doc.data())
+        console.log(doc.data());
+        console.log(productItemPage);
     }
 
 
     useEffect(() => {
-        getItem(location.id);
+        getItem(params.id);
     }, [])
     return (
 
         <div className={"shop-Item-Page"}>
-            <img src={productItemPage.image}></img>
             <label  className={"shop-Item-Title"}>{productItemPage.name}</label> <br/><label className={"shop-Item-Description"}>{productItemPage.description}</label>
             <br/>  <label  className={"shop-Item-Price"}>Цена {productItemPage.price}</label>
         </div>
