@@ -13,7 +13,7 @@ const ProductItem = () => {
         if (!doc.exists) {
             console.log('No such document!');
             } else {
-                console.log("No such document!123");
+                console.log("No such document!");
             }
     }
 
