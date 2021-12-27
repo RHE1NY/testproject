@@ -2,12 +2,13 @@ import React, {useEffect, useState} from 'react';
 import db from "../../firebase.config";
 import Loader from "../Loader/Loader";
 import {Link, useNavigate} from "react-router-dom";
+import cart from "./cart";
 
 const Pageshop = () => {
         const [jewelryList, setJewelryList] = useState([]);
         const [isLoading, setIsLoading] = useState(false);
         const [productItems, setProductItems] = useState([]);
-        const [limit, setLimit] = useState(5);
+     const limit = 5;
         const [pagesCount, setPagesCount] = useState(1);
         const [page, setPage] = useState(1);
         const [visibleItems, setVisibleItems] = useState([]);
@@ -15,6 +16,8 @@ const Pageshop = () => {
         const indexOfFirstItem = indexOfLastItem - limit;
         const pageItems = visibleItems.slice(indexOfFirstItem, indexOfLastItem);
         const [searchProducts, setSearchProducts] = useState('');
+        const [cartCount, setCartCount] = useState(0);
+        const [cartBasket, setCartBasket] = useState([]);
 
 
         async function fetchProducts() {
@@ -71,9 +74,20 @@ const Pageshop = () => {
         }
 
 
+       function addCartItem (id) {
+            setCartCount(cartCount + 1);
+            setCartBasket.toString(cartBasket.push({id: id, count: 1}));
+               // productItems.find(item=>item.id === id ? [...cartBasket + item] : item);
+            console.log(cartBasket);
+
+            /* return {...state, basket: state.basket.find(item => item.id === action.payload) ?
+                  state.basket.map(item => item.id === action.payload ? { ...item, count: item.count + 1} : item) : [...state.basket, { id: action.payload, count: 1}]} */
+
+        }
+
 
     useEffect(() => {
-        setVisibleItems(productItems.filter(shop => (shop.name && shop.description.toLowerCase().includes(searchProducts))))
+        setVisibleItems(productItems.filter(item => (item.name && item.description.toLowerCase().includes(searchProducts))))
     }, [searchProducts])
 
         const changePage = (page) => {
@@ -100,7 +114,10 @@ const Pageshop = () => {
                            placeholder={"Введите значение"}
                     />
                     <div className="jewelry-panel">
-                        {isLoading ? <Loader/> :
+                        {isLoading
+                            ?
+                            <Loader/>
+                            :
                             jewelryList.map(item =>
                                 <div key={item.id} className="jewelry-product-panel">
                                     <div className="jewelry-product-item">
@@ -131,6 +148,7 @@ const Pageshop = () => {
                                     <span className="product-price"> Цена: {productItem.price}</span>
                                 <br/>
                                 <span className="product-description"> {productItem.description}</span>
+                                <pre><button onClick={() => addCartItem(productItem.id)}>Добавить в корзину</button></pre>
                             </div>)}
                     </div>
                 </div>
@@ -140,6 +158,8 @@ const Pageshop = () => {
                                 onClick={() => changePage(p)}
                         >{p}</button>
                     )}</div>
+
+                {cartCount}
             </div>
         );
     }

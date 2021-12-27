@@ -51,6 +51,18 @@ header .container {
     color:red;
 }
 
+.user-info {
+    font-family: "Fira Code Light";
+    font-weight: bold;
+    color: palevioletred;
+    font-size: 15px;
+    text-decoration: none;
+}
+
+.user-info:hover {
+    color:black;
+}
+
 .menu a.menu-item:hover {
     color:black;
     font-weight: bold;
@@ -177,6 +189,7 @@ header .container {
 
 .product-item {
     padding:10px;
+    display: table;
 }
 
 .product-name {

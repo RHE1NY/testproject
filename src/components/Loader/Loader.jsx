@@ -3,7 +3,7 @@ import './Loader.css'
 
 const Loader = () => {
     return (
-        <div className={"loaderCircle"}>
+        <div className="lds-hourglass">
 
         </div>
     );

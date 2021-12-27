@@ -3,11 +3,13 @@ import {Link, NavLink} from "react-router-dom";
 import logo from '../../img/download.png'
 import {ContextGlobal} from "../../firebase.config";
 import {useAuthState} from "react-firebase-hooks/auth";
+import Loader from "../Loader/Loader";
+import Cart from "../pageshop/cart";
 
 const Navbar = () => {
    const  {aunty} = useContext(ContextGlobal)
     const {user} = useAuthState(aunty)
-    console.log(user);
+
     return (
         <header>
             <div className="container">
@@ -21,9 +23,12 @@ const Navbar = () => {
                     <Link to="/about" className="menu-item">О нас</Link>
                     {user
                         ?
-                        <button onClick={()=>aunty.signOut()} className="menu-item">
+                        <span>Привет,    <Link className="product-name" to={`/user/${user.l}`}> {user.displayName} </Link>
+                        <pre> <button onClick={()=>aunty.signOut()+window.location.replace("/shop")} className="menu-item">
                             Выйти
-                        </button>
+                        </button></pre>
+                        <Cart/>
+                        </span>
                         :
                         <NavLink className="menu-item" to="/login">
                             Логин
